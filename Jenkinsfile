@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('pull_rep') {
             steps {
-                sh ' cd /opt/ansible-exam2 && git pull origin main '
+                sh ' cd /opt/student_exam2_ansible && git pull origin main '
             }
         }
         stage('deploy_webapp') {
