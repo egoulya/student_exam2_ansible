@@ -1,6 +1,11 @@
 ---
 - hosts: exam
   become: yes
+  tasks:
+    - authorized_key:
+        user: {{ host_user }}
+        state: present
+        key: "{{ lookup('file', '/var/lib/Jenkins/.ssh/id_rsa.pub') }}"
   roles:
     - webapp
     - nginx
