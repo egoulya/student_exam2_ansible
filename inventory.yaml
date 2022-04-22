@@ -2,5 +2,5 @@ all:
   hosts:
     exam:
       ansible_host: 192.168.225.131
-      ansible_ssh_user: {{ host_user }}
-      ansible_ssh_pass: {{ host_pass }}
+      ansible_user: {{ host_user }}
+      ansible_password: {{ host_pass }}
