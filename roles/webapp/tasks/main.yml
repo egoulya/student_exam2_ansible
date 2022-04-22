@@ -12,7 +12,7 @@
   docker_container:
     name: "webapp_{{ item }}"
     state: started
-    image: "{{ image_wepapp }}"
+    image: "{{ image_webapp }}"
     pull: true
     ports:
       - "{{ item }}:5000"
