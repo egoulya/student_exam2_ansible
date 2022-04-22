@@ -1,0 +1,19 @@
+- name: Install docker
+  include_role:
+    name: docker
+
+- name: DockerHub Login
+  docker_login:
+    username: "{{ DH_login }}"
+    password: "{{ DH_pass }}"
+    email: "{{ DH_email }}"
+
+- name: Start web app
+  docker_container:
+    name: "webapp_{{ item }}"
+    state: started
+    image: "{{ image_wepapp }}"
+    pull: true
+    ports:
+      - "{{ item }}:5000"
+  with_items: "{{ docker_ports }}"

@@ -1,0 +1,22 @@
+---
+- name: Install docker
+  include_role:
+    name: docker
+
+- include_vars: ../../webapp/vars/main.yaml
+
+- name: Create conf from template
+  ansible.builtin.template:
+    src: "{{ src_template }}"
+    dest: "{{ dest_template }}"
+  
+- name: restart nginx docker
+  docker_container:
+    name: "{{ nginx_docker_name }}"
+    state: started
+    image: nginx
+    pull: true
+    volumes:
+      - "{{ volume_nginx }}"
+    ports:
+      - "{{ port_nginx }}"
