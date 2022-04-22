@@ -3,8 +3,7 @@
   include_role:
     name: docker
 
-- vars_files: 
-    - ../../webapp/vars/main.yaml
+- include_vars: ../../webapp/vars/main.yml
 
 - name: Create conf from template
   ansible.builtin.template:
