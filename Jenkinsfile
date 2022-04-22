@@ -12,8 +12,8 @@ pipeline {
                 echo 'Deploying web application...'
                 ansiblePlaybook(
                     vaultCredentialsId: 'AnsibleVault',
-                    inventory: '/opt/ansible-exam2/inventory.yaml',
-                    playbook: '/opt/ansible-exam2/site.yaml'
+                    inventory: '/opt/student_exam2_ansible/inventory.yaml',
+                    playbook: '/opt/student_exam2_ansible/site.yaml'
                 )
             }
         }
