@@ -24,7 +24,9 @@ pipeline {
                     try {
                         def response = sh(returnStdout: true, script: 'curl -s -o /dev/null -w "%{http_code}" http://192.168.225.131:5000')
                         if (response.equals("200")) {
+                            echo "Success: HTTP Status: ${response}"
                         } else {
+                            echo "Failure: HTTP Status: ${response}"
                             sh "exit 1"
                        }
                     } catch (e) {
