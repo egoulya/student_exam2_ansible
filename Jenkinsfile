@@ -18,17 +18,18 @@ pipeline {
             }
         }
         stage('test') {
-            try {
-                steps {
-                    def response = sh(returnStdout: true, script: 'curl -s -o /dev/null -w "%{http_code}" http://192.168.225.131:5000')
-                    if (response.equals("200")) {
-                    } else {
-                        sh "exit 1"
+            steps {
+                script {
+                    try {
+                        def response = sh(returnStdout: true, script: 'curl -s -o /dev/null -w "%{http_code}" http://192.168.225.131:5000')
+                        if (response.equals("200")) {
+                        } else {
+                            sh "exit 1"
+                       }
+                    } catch (e) {
+                        currentBuild.result = 'FAILURE'
                     }
                 }
-            } catch (e) {
-                currentBuild.result = 'UNSTABLE'
-                result = "FAIL"
             }
         }
     } 
