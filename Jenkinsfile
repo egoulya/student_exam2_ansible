@@ -13,7 +13,8 @@ pipeline {
                 ansiblePlaybook(
                     vaultCredentialsId: 'AnsibleVault',
                     inventory: '/opt/student_exam2_ansible/inventory.yaml',
-                    playbook: '/opt/student_exam2_ansible/site.yaml'
+                    playbook: '/opt/student_exam2_ansible/site.yaml',
+                    disableHostKeyChecking: true
                 )
             }
         }
