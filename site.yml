@@ -1,6 +1,0 @@
----
-- hosts: exam
-  become: yes
-  roles:
-    - webapp
-    - nginx
